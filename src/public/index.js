@@ -57,10 +57,10 @@ const fecha = t => {
 const determina_idioma = () => {
     if (localStorage.sarobeInfraestructuras2021) {
         id_sel = JSON.parse(localStorage.getItem('sarobeInfraestructuras2021')).id_sel
-        document.querySelector('#id_selector').innerHTML =(
-        `<option value="0" ${(id_sel == 0)? 'selected':''}>Castellano</option>
-        <option value="1" ${(id_sel == 1)? 'selected':''}>Euskera</option>`)
-    }
+    } 
+    document.getElementById('id_selector').innerHTML = (
+        `<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
+         <option value="1" ${(id_sel == 1) ? 'selected' : ''}>Euskera</option>`)
 }
 const establece_idioma = i => {
     localStorage.setItem('sarobeInfraestructuras2021', JSON.stringify({ id_sel: Number(i) }))
