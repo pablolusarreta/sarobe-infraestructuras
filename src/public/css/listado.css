@@ -1,0 +1,81 @@
+@font-face {
+    font-family: principal;
+    src: url("../fuentes/ubuntu-r-webfont.woff");
+  }
+
+/*--------------------- BODY ---------------------*/
+
+body {
+    font-family: principal, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background: url('../img/logo-izq.jpg') left top no-repeat, 
+    url('../img/logo-der.jpg') right top no-repeat,
+    url('../img/logo-cen.jpg') center top no-repeat;
+    background-color: #353990;
+    background-color: #000;
+}
+#titular{
+    margin: 100px auto;
+    margin-bottom:10px;
+    width: 80vw;
+    max-width: 900px;
+    font-size: 50px;
+    color:#353990;
+    text-align: right;
+}
+#tablas > h3 {
+    margin: 0px auto;
+    width: 80vw;
+    max-width: 900px;
+    color:#fff;
+}
+table {
+    font-family: principal, Arial, Helvetica, sans-serif;
+    margin: 20px auto;
+    margin-bottom: 100px;
+    width: 80vw;
+    max-width: 900px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+}
+td.fecha{
+    font-size: 10px;
+}
+th {
+    background-color: #ccc;
+    font-size: 15px;
+}
+#contenido {
+    margin: 60px auto;
+    margin-bottom: 100px;
+    width: 80vw;
+    max-width: 900px;
+    color:#fff;
+}
+#contenido > b {
+width: 100%;
+}
+#contenido > img {
+    margin: 40px 0;
+    border:2px solid #353990;;
+}
+#logo {
+    width: 100vw;
+}
+#pie {
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color:#fff;
+  }
+  #pie > a {
+      text-decoration: none;
+      color: #ff8836;
+  }

@@ -1,0 +1,5 @@
+.vscode
+node_modules
+start.bat
+gitignore
+mongoose-colecciones.txt
