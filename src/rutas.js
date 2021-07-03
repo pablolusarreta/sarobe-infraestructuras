@@ -6,17 +6,7 @@ const Inventarios = require('./modelos/inventarios')
 const Contenidos = require('./modelos/contenidos')
 const Textos = require('./modelos/textos')
 require('./conexion')
-//
-router.get('/select', async (req, res) => {
-    console.log(req.query)
-    const coleccion = eval(req.query.coleccion)
-    const grupo = eval(req.query.grupo)
-    const salida = await coleccion.find({ Grupo: grupo }).sort({ Descripcion1: 1 })
-    if (!salida) {
-        return res.status(404).send("ERROR")
-    }
-    res.status(200).json(salida)
-});
+
 
 
 
