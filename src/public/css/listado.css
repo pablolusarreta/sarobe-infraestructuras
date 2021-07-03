@@ -1,7 +1,61 @@
 @font-face {
     font-family: principal;
     src: url("../fuentes/ubuntu-r-webfont.woff");
-  }
+}
+
+@media only screen and (max-width: 6000px) {
+    body {
+        zoom: 4;
+    }
+}
+
+@media only screen and (max-width: 5300px) {
+    body {
+        zoom: 3;
+    }
+}
+
+@media only screen and (max-width: 4000px) {
+    body {
+        zoom: 2.5;
+    }
+}
+
+@media only screen and (max-width: 3600px) {
+    body {
+        zoom: 2;
+    }
+}
+
+@media only screen and (max-width: 2500px) {
+    body {
+        zoom: 1.6;
+    }
+}
+
+@media only screen and (max-width: 1900px) {
+    body {
+        zoom: 1.3;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    body {
+        zoom: 1;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    body {
+        zoom: 0.9;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        zoom: 0.8;
+    }
+}
 
 /*--------------------- BODY ---------------------*/
 
@@ -10,33 +64,35 @@ body {
     margin: 0;
     padding: 0;
     font-size: 14px;
-    background: url('../img/logo-izq.jpg') left top no-repeat, 
-    url('../img/logo-der.jpg') right top no-repeat,
-    url('../img/logo-cen.jpg') center top no-repeat;
+    background: url('../img/logo-izq.jpg') left top no-repeat, url('../img/logo-der.jpg') right top no-repeat, url('../img/logo-cen.jpg') center top no-repeat;
     background-color: #353990;
     background-color: #000;
 }
-#titular{
+
+#titular {
     margin: 100px auto;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     width: 80vw;
     max-width: 900px;
     font-size: 50px;
-    color:#353990;
+    color: #353990;
     text-align: right;
 }
-#tablas > h3 {
+
+#tablas>h3 {
     margin: 0px auto;
     width: 80vw;
     max-width: 900px;
-    color:#fff;
+    color: #fff;
 }
+
 table {
     font-family: principal, Arial, Helvetica, sans-serif;
     margin: 20px auto;
     margin-bottom: 100px;
     width: 80vw;
     max-width: 900px;
+    min-width: 500px;
     border-collapse: collapse;
     background-color: white;
 }
@@ -45,37 +101,46 @@ th, td {
     padding: 4px 10px;
     border: 1px solid #ccc;
 }
-td.fecha{
+
+td.fecha {
     font-size: 10px;
 }
+
 th {
     background-color: #ccc;
     font-size: 15px;
 }
+
 #contenido {
     margin: 60px auto;
     margin-bottom: 100px;
     width: 80vw;
     max-width: 900px;
-    color:#fff;
+    color: #fff;
 }
-#contenido > b {
-width: 100%;
+
+#contenido>b {
+    width: 100%;
 }
-#contenido > img {
-    margin: 40px 0;
-    border:2px solid #353990;;
+
+#contenido>img {
+    display: inline-block;
+    margin: 40px 60px;
+    border: 2px solid #353990;
 }
+
 #logo {
     width: 100vw;
 }
+
 #pie {
     padding: 10px;
     text-align: center;
     font-size: 12px;
-    color:#fff;
-  }
-  #pie > a {
-      text-decoration: none;
-      color: #ff8836;
-  }
+    color: #fff;
+}
+
+#pie>a {
+    text-decoration: none;
+    color: #ff8836;
+}

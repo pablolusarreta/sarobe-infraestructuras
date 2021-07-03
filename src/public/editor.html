@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web mongodb remoto</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <nav>
+        <form>
+
+            <label>Nombre</label><input type="text" id="nom" value="Nombre"><br>
+            <label>Apellido1</label><input type="text" id="ap1" value="Apellido primero"><br>
+            <label>Apellido2</label><input type="text" id="ap2" value="Apellido segundo"><br>
+            <label>Telefono</label><input type="text" id="tlf" value="943008145"><br>
+            <label>Relacion</label><input type="text" id="rel" value="conocido"><br>
+            <label>Lugar</label><input type="text" id="lug" value="Donosti"><br>
+            <br>
+            <button onclick="crea()" type="button">Añadir</button>
+
+        </form>
+    </nav>
+    <nav>
+        <button onclick="recarga()">&#11119;</button>
+    </nav>
+    <table>
+        <thead id="cabeceraTabla"> </thead>
+        <tbody id="cuerpoTabla"> </tbody>
+    </table>
+
+
+    <div id="estado"></div>
+</body>
+
+</html>

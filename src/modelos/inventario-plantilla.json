@@ -1,0 +1,21 @@
+{
+    "_id": {
+        "$oid": "60d5a8adcffdb42df4b968d4"
+    },
+    "ID": "12",
+    "Cantidad": "Zenbaki",
+    "Grupo": "Talde",
+    "Descripcion1": "Gaztelera deskribapen",
+    "Descripcion2": "Euskara deskribapen",
+    "Marca": "Markak",
+    "Modelo": "Eredu",
+    "Modificado": "Aldatzaile",
+    "Estado": "Egoera",
+    "Departamento": "Departamentu",
+    "Ubicacion": "Kokapen",
+    "Portable": "Eramangarri",
+    "Disponible": "Erabil",
+    "Alquiler": "Alokairu",
+    "Ocupacion": "Egiteko",
+    "Foto": "Argazki"
+}
