@@ -1,29 +1,4 @@
-let Idiomas = [{
-    "ID": "1", "texto": "Castellano", "color": "#f0f"
-},
-{
-    "ID": "2", "texto": "Euskara", "color": "#f0f"
-}]
-const cabecera_tabla = (`
-<tr>       
-    <th>Nº</th>
-    <th>Descripción</th>         
-    <th>Marca</th>
-    <th>Modelo</th>
-    <th>Fecha</th>         
-</tr>
-`)
-const grupos = [
-    { ID: '1', nombre: 'Espacios' },
-    { ID: '5', nombre: 'Audiovisuales' },
-    { ID: '8', nombre: 'Iluminación' },
-    { ID: '9', nombre: 'Maquinaria' }
-]
-let Idioma_sel = 0
-
-
-
-
+let id_sel = 0
 
 const listado_inventario = d => {
     grupos.forEach(g => {
@@ -35,7 +10,7 @@ const listado_inventario = d => {
                 cuerpoTabla += (`
                 <tr>
                     <td>${element.Cantidad}</td>          
-                    <td>${element.Descripcion1}</td>
+                    <td>${element['Descripcion' + (id_sel + 1)]}</td>
                     <td>${element.Marca}</td>
                     <td>${element.Modelo}</td>
                     <td class="fecha">${fecha(element.Modificado)}</td>
@@ -44,15 +19,15 @@ const listado_inventario = d => {
             }
         })
 
-        tablas.innerHTML += '<h3>' + titulo + '</h3><table>' + cabecera_tabla + cuerpoTabla + '</table>'
+        tablas.innerHTML += '<h3>' + titulo + '</h3><table>' + cabecera_tabla[id_sel] + cuerpoTabla + '</table>'
     });
 }
 const salida_contenido = d => {
     contenido.innerHTML = d.Texto.replace('\\r\\n', '<br>')
 }
-const carga_contenido = i => {
+const carga_contenido = () => {
     let ini = { method: 'GET', mode: 'cors', redirect: 'follow', cache: 'default' };
-    fetch("/contenido?ID=" + i, ini)
+    fetch("/contenido?ID=" + (id_sel + 1) + '130', ini)
         .then(res => {
             return res.json()
         })
@@ -79,10 +54,23 @@ const fecha = t => {
     m = m < 10 ? '0' + m : m
     return d + '/' + m + '/' + a
 }
+const determina_idioma = () => {
+    if (localStorage.sarobeInfraestructuras2021) {
+        id_sel = JSON.parse(localStorage.getItem('sarobeInfraestructuras2021')).id_sel
+        document.querySelector('#id_selector').innerHTML =(
+        `<option value="0" ${(id_sel == 0)? 'selected':''}>Castellano</option>
+        <option value="1" ${(id_sel == 1)? 'selected':''}>Euskera</option>`)
+    }
+}
+const establece_idioma = i => {
+    localStorage.setItem('sarobeInfraestructuras2021', JSON.stringify({ id_sel: Number(i) }))
+    location.reload()
+}
 window.onload = () => {
     const tablas = document.getElementById('tablas')
     const contenido = document.getElementById('contenido')
     //
+    determina_idioma()
     carga_inventario()
-    carga_contenido('1130')
+    carga_contenido()
 }

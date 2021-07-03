@@ -70,15 +70,28 @@ body {
 }
 
 #titular {
-    margin: 100px auto;
-    margin-bottom: 10px;
-    width: 80vw;
+    margin: 110px auto;
+    margin-bottom: 50px;
+    padding-left: 150px;
+    width: calc( 80vw - 150px );
     max-width: 900px;
     font-size: 50px;
     color: #353990;
-    text-align: right;
-}
 
+}
+#titular > select {
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    font-family: principal;
+    color:#ff8836;
+    background-color: #000;
+    border: none;
+    font-size: 18px;
+}
+#titular > select > option{
+    font-size: 10px;
+}
 #tablas>h3 {
     margin: 0px auto;
     width: 80vw;
@@ -87,7 +100,7 @@ body {
 }
 
 table {
-    font-family: principal, Arial, Helvetica, sans-serif;
+
     margin: 20px auto;
     margin-bottom: 100px;
     width: 80vw;
