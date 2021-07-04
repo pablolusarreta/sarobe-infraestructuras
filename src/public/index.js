@@ -1,5 +1,3 @@
-let id_sel = 0
-
 const listado_inventario = d => {
     grupos.forEach(g => {
         let cuerpoTabla = new String()
@@ -35,9 +33,9 @@ const carga_contenido = () => {
             salida_contenido(response)
         })
 }
-const carga_inventario = g => {
+const carga_inventario = () => {
     let ini = { method: 'GET', mode: 'cors', redirect: 'follow', cache: 'default' };
-    fetch("/inventario?grupo=" + g, ini)
+    fetch("/inventario", ini)
         .then(res => {
             return res.json()
         })
@@ -57,20 +55,24 @@ const fecha = t => {
 const determina_idioma = () => {
     if (localStorage.sarobeInfraestructuras2021) {
         id_sel = JSON.parse(localStorage.getItem('sarobeInfraestructuras2021')).id_sel
-    } 
-    document.getElementById('id_selector').innerHTML = (
-        `<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
+    }
+    document.getElementById('selector_idiomas').innerHTML =
+        (`<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
          <option value="1" ${(id_sel == 1) ? 'selected' : ''}>Euskera</option>`)
+    document.getElementById('titular').innerHTML =
+        ((id_sel == 0) ? 'Infraestructuras' : 'Azpiegiturak')
+    carga_inventario()
+    carga_contenido()
 }
 const establece_idioma = i => {
+    id_sel = Number(i)
     localStorage.setItem('sarobeInfraestructuras2021', JSON.stringify({ id_sel: Number(i) }))
-    location.reload()
+    determina_idioma()
 }
+let id_sel = 0
 window.onload = () => {
     const tablas = document.getElementById('tablas')
     const contenido = document.getElementById('contenido')
     //
     determina_idioma()
-    carga_inventario()
-    carga_contenido()
 }

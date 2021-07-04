@@ -11,11 +11,10 @@ require('./conexion')
 
 
 router.get('/inventario', async (req, res) => {
-    const grupo = req.query.grupo
     const salida = await Inventarios.find(
         { $or: [{ Grupo: '1' }, { Grupo: '5' }, { Grupo: '8' }, { Grupo: '9' }] },
-        { _id: 0, Grupo: 1, Cantidad: 1, Descripcion1: 1,Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 }
-    ).sort({ Grupo: 1, Descripcion1: 1 })
+        { _id: 0, Grupo: 1, Cantidad: 1, Descripcion1: 1, Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 }
+    ).sort({ Grupo: 1, Descripcion1: 1, Descripcion2: 1 })
     if (!salida) {
         return res.status(404).send("ERROR")
     }

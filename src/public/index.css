@@ -67,25 +67,30 @@ body {
     margin: 110px auto;
     margin-bottom: 50px;
     padding-left: 150px;
-    width: calc( 80vw - 150px );
+    width: calc( 80vw - 150px);
     max-width: 900px;
     font-size: 50px;
     color: #353990;
-
 }
-#titular > select {
+
+#selector_idiomas {
     position: absolute;
-    top: 200px;
+    top: 160px;
     right: 20px;
     font-family: principal;
-    color:#ff8836;
+    color: #ff8836;
     background-color: #000;
     border: none;
     font-size: 18px;
 }
-#titular > select > option{
-    font-size: 10px;
+
+#selector_idiomas>option {
+    font-size: 12px;
+    border: none;
+    text-align: right;
+    transition: background-color 0.5s;
 }
+
 #tablas>h3 {
     margin: 0px auto;
     width: 80vw;
@@ -94,7 +99,6 @@ body {
 }
 
 table {
-
     margin: 20px auto;
     margin-bottom: 100px;
     width: 80vw;
