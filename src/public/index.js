@@ -1,10 +1,11 @@
 const listado_inventario = d => {
+    tablas.innerHTML = ''
     grupos.forEach(g => {
         let cuerpoTabla = new String()
         let titulo = new String()
         d.forEach(element => {
             if (element.Grupo == g.ID) {
-                titulo = g.nombre
+                titulo = (id_sel == 0) ? g.nombre : g.izena
                 cuerpoTabla += (`
                 <tr>
                     <td>${element.Cantidad}</td>          

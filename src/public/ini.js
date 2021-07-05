@@ -28,8 +28,8 @@ const cabecera_tabla = [(`
 `)
 ]
 const grupos = [
-    { ID: '1', nombre: 'Espacios' },
-    { ID: '5', nombre: 'Audiovisuales' },
-    { ID: '8', nombre: 'Iluminación' },
-    { ID: '9', nombre: 'Maquinaria' }
+    { ID: '1', nombre: 'Espacios',izena: 'Guneak' },
+    { ID: '5', nombre: 'Audiovisuales',izena: 'Ikus-entzunezko' },
+    { ID: '8', nombre: 'Iluminación',izena: 'Argiztapen' },
+    { ID: '9', nombre: 'Maquinaria',izena: 'Makina eszenikoa' }
 ]

@@ -1,5 +1,10 @@
 @font-face {
     font-family: principal;
+    src: url("../fuentes/segoe_ui_light-webfont.woff");
+}
+
+@font-face {
+    font-family: monoespacio;
     src: url("../fuentes/ubuntu-r-webfont.woff");
 }
 
@@ -54,21 +59,46 @@
 /*--------------------- BODY ---------------------*/
 
 body {
+    min-width: 780px;
     font-family: principal, Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     font-size: 14px;
-    background: url('../img/logo-izq.jpg') left top no-repeat, url('../img/logo-der.jpg') right top no-repeat, url('../img/logo-cen.jpg') center top no-repeat;
-    background-color: #353990;
+    /*background: url('../img/logo-izq.jpg') left top no-repeat, url('../img/foco.png') right top no-repeat, url('../img/logo-cen.jpg') center top no-repeat;
+    background-color: #353990;*/
     background-color: #000;
 }
 
+header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 200px;
+    background-color: #000;
+    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.6);
+}
+
+header>img {
+    height: 100%;
+}
+
+header>img:nth-child(2) {
+    position: absolute;
+    height: 80%;
+    top: 20px;
+    left: 40%;
+}
+
+header>img:nth-child(3) {
+    position: absolute;
+    right: 0;
+    height: 60%;
+}
+
 #titular {
-    margin: 110px auto;
-    margin-bottom: 50px;
-    padding-left: 150px;
-    width: calc( 80vw - 150px);
-    max-width: 900px;
+    position: absolute;
+    bottom: 4px;
+    left: 260px;
     font-size: 50px;
     color: #353990;
 }
@@ -91,6 +121,15 @@ body {
     transition: background-color 0.5s;
 }
 
+section {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    height: calc(100% - 218px);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
 #tablas>h3 {
     margin: 0px auto;
     width: 80vw;
@@ -106,6 +145,7 @@ table {
     min-width: 500px;
     border-collapse: collapse;
     background-color: white;
+    font-weight: 900;
 }
 
 th, td {
@@ -137,21 +177,31 @@ th {
 #contenido>img {
     display: inline-block;
     margin: 40px 60px;
-    border: 2px solid #353990;
+    border: 4px solid #ff8836;
 }
 
 #logo {
     width: 100vw;
 }
 
-#pie {
-    padding: 10px;
+footer {
+    position: fixed;
+    bottom: 0px;
+    padding: 4px 0 4px 0;
+    width: 100%;
+    height: 10px;
     text-align: center;
     font-size: 12px;
+    background-color: #000;
     color: #fff;
+    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.6);
 }
 
-#pie>a {
+footer>span>a {
     text-decoration: none;
     color: #ff8836;
+}
+
+footer>span {
+    padding: 0 30px
 }
