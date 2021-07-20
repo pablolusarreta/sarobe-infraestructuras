@@ -64,9 +64,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 14px;
-    /*background: url('../img/logo-izq.jpg') left top no-repeat, url('../img/foco.png') right top no-repeat, url('../img/logo-cen.jpg') center top no-repeat;
-    background-color: #353990;*/
-    background-color: #000;
+    background-color: #000019;
 }
 
 header {
@@ -105,8 +103,8 @@ header>img:nth-child(3) {
 
 #selector_idiomas {
     position: absolute;
-    top: 160px;
-    right: 20px;
+    top: 130px;
+    right: 10px;
     font-family: principal;
     color: #ff8836;
     background-color: #000;
@@ -130,11 +128,16 @@ section {
     overflow-x: hidden;
 }
 
-#tablas>h3 {
+.titulos {
     margin: 0px auto;
     width: 80vw;
     max-width: 900px;
+    min-width: 500px;
     color: #fff;
+}
+
+.titulos>img {
+    float: right;
 }
 
 table {

@@ -4,9 +4,6 @@ const path = require('path')
 const rutas = require('./src/rutas.js')
 const app = express()
 
-
-
-
 // Configuración
 app.set('port', process.env.PORT || 3000)
 // middlewares

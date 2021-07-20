@@ -8,8 +8,6 @@ const Textos = require('./modelos/textos')
 require('./conexion')
 
 
-
-
 router.get('/inventario', async (req, res) => {
     const salida = await Inventarios.find(
         { $or: [{ Grupo: '1' }, { Grupo: '5' }, { Grupo: '8' }, { Grupo: '9' }] },
@@ -35,5 +33,7 @@ router.get('/contenido', async (req, res) => {
     }
     res.status(200).json(salida)
 });
+
+
 //
 module.exports = router

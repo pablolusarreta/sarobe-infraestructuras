@@ -18,9 +18,14 @@ const listado_inventario = d => {
             }
         })
 
-        tablas.innerHTML += '<h3>' + titulo + '</h3><table>' + cabecera_tabla[id_sel] + cuerpoTabla + '</table>'
+        tablas.innerHTML +=
+            `<div>
+            <h1 class="titulos">${titulo}<img src="img/print.png" onclick="imprime(this,'${titulo}')"></h1>
+            <table>${cabecera_tabla[id_sel] + cuerpoTabla}</table>
+        </div>`
     });
 }
+
 const salida_contenido = d => {
     contenido.innerHTML = d.Texto.replace('\\r\\n', '<br>')
 }
@@ -46,11 +51,8 @@ const carga_inventario = () => {
 }
 const fecha = t => {
     const tm = new Date(t * 1000)
-    let d = tm.getDay()
-    let m = tm.getMonth()
-    let a = tm.getFullYear()
-    d = d < 10 ? '0' + d : d
-    m = m < 10 ? '0' + m : m
+    let d = tm.getDay(); let m = tm.getMonth(); let a = tm.getFullYear();
+    d = d < 10 ? '0' + d : d; m = m < 10 ? '0' + m : m
     return d + '/' + m + '/' + a
 }
 const determina_idioma = () => {
@@ -70,6 +72,54 @@ const establece_idioma = i => {
     localStorage.setItem('sarobeInfraestructuras2021', JSON.stringify({ id_sel: Number(i) }))
     determina_idioma()
 }
+const imprime = (ob, titulo) => {
+    console.log(ob.parentNode.parentNode.parentNode.innerHTML)
+    let htm =    `<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>${titulo}</title>
+        <link rel="stylesheet" href="index.css">
+        <style type="text/css" media="print">
+        @media print {
+            @font-face {
+                font-family: principal;
+                src: url("../fuentes/segoe_ui_light-webfont.woff");
+            }
+            body{ font-family: principal;}
+            img{display:none;}
+            h1{font-size: 28px;}
+            table {               
+                margin-bottom: 100px;
+                width: 100vw;
+                border-collapse: collapse;
+                border: 1px solid #000;
+                background-color: white;
+            }
+            th,td{ border: 1px solid #000;font-size: 14px;}
+            footer{font-size:12px;text-align: center;}
+        }
+        </style>
+    </head>  
+    <body>
+    ${ob.parentNode.parentNode.innerHTML}
+    <footer>
+        <span>M. Yurramendi 2, 20130 Urnieta (Gipuzkoa)</span>
+        <b>|</b><span>Tel.: <a href="callto:943008042">943 008042</a></span>
+        <b>|</b><span> Fax: 943 008067</span>
+        <b>|</b><span><a href="mailto:sarobe@urnieta.eus">sarobe@urnieta.eus</a></span>
+        <b>|</b><span>2012 ®</span>
+        </footer>
+    </body>
+    </html>`
+    let ventana = window.open()
+    ventana.document.write(htm)
+    ventana.print()
+    ventana.close()
+
+}
+/////////////////////////////////////////////////////////////////////////
 let id_sel = 0
 window.onload = () => {
     const tablas = document.getElementById('tablas')
