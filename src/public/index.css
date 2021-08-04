@@ -136,8 +136,25 @@ section {
     color: #fff;
 }
 
-.titulos>img {
+.descargar {
+    display: block;
     float: right;
+    border: none;
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color .5s;
+}
+.descargar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.descargar>img {
+    width: 20px;
+    height: 20px;
+    margin: 0px 10px;
+}
+h1 {
+    padding-bottom: 8px;
+    border-bottom:3px solid rgba(255, 255, 255, 0.1);
 }
 
 table {
@@ -207,4 +224,17 @@ footer>span>a {
 
 footer>span {
     padding: 0 30px
+}
+
+#telon {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.8;
+}
+
+#telon>img {
+    margin: calc(50vh - 10px) calc(50vw - 110px);
 }

@@ -8,28 +8,34 @@ let Idiomas = [{
     texto: "Euskera",
     color: "#f0f"
 }]
-const cabecera_tabla = [(`
-<tr>       
-    <th>Nº</th>
-    <th>Descripción</th>         
-    <th>Marca</th>
-    <th>Modelo</th>
-    <th>Fecha</th>         
-</tr>
-`),
-(`
-<tr>       
-    <th>Zª</th>
-    <th>Deskribapen</th>         
-    <th>Markak</th>
-    <th>Eredu</th>
-    <th>Data</th>         
-</tr>
-`)
+const cabecera_tabla = [`<tr>       
+                            <th>Nº</th>
+                            <th>Descripción</th>         
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Fecha</th>         
+                        </tr>`,
+                        `<tr>       
+                            <th>Zª</th>
+                            <th>Deskribapen</th>         
+                            <th>Markak</th>
+                            <th>Eredu</th>
+                            <th>Data</th>         
+                        </tr>`
 ]
 const grupos = [
-    { ID: '1', nombre: 'Espacios',izena: 'Guneak' },
-    { ID: '5', nombre: 'Audiovisuales',izena: 'Ikus-entzunezko' },
-    { ID: '8', nombre: 'Iluminación',izena: 'Argiztapen' },
-    { ID: '9', nombre: 'Maquinaria',izena: 'Makina eszenikoa' }
+    { ID: '1', nombre: 'Espacios', izena: 'Guneak' },
+    { ID: '5', nombre: 'Audiovisuales', izena: 'Ikus-entzunezko' },
+    { ID: '8', nombre: 'Iluminación', izena: 'Argiztapen' },
+    { ID: '9', nombre: 'Maquinaria', izena: 'Makina eszenikoa' }
+]
+const otros = [
+    {
+        plano: { nom: 'Plano tecnico', url: ['pdf/SarobePlanoTecnico.pdf', 'pdf/SarobePlanoTecnico.dwg'] },
+        conciertos: { nom: 'Dotación tecnica Sarobe-Kontzertuak', url: ['pdf/SarobeKontzertuaEquipamiento.pdf'] }
+    },
+    {
+        plano: { nom: 'Plano teknikooa', url: ['pdf/SarobePlanoTecnico.pdf', 'pdf/SarobePlanoTecnico.dwg'] },
+        conciertos: { nom: 'Hornidurak teknikoa Sarobe-Kontzertuak', url: ['pdf/SarobeKontzertuaEquipamiento.pdf'] }
+    }
 ]
