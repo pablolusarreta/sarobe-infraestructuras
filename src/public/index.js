@@ -8,48 +8,40 @@ const listado_inventario = d => {
             if (element.Grupo == g.ID) {
                 titulo = (id_sel == 0) ? g.nombre : g.izena
                 dep = element.Grupo
-                cuerpoTabla += (`
-                <tr>
+                cuerpoTabla += 
+                `<tr>
                     <td>${element.Cantidad}</td>          
                     <td>${element['Descripcion' + (id_sel + 1)]}</td>
                     <td>${element.Marca}</td>
                     <td>${element.Modelo}</td>
                     <td class="fecha">${fecha(element.Modificado)}</td>
-                </tr>
-                                `)
+                </tr>`
             }
         })
         tablas.innerHTML +=
             `<div>
             <h1 class="titulos">${titulo}<button class="descargar" onclick="pdf(${dep},${id_sel},'${titulo}')">
-            <img  src="img/pdf.png" ><img  src="img/descargar.png" >
+            ${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" >
             </button></h1>
             <table>${cabecera_tabla[id_sel] + cuerpoTabla}</table>
         </div>`
     });
 }
 
-const salida_contenido = d => {
-    const extras = `<div style="height:60px;"></div><h1 class="titulos">${otros[id_sel].plano.nom}<button class="descargar">
-                    <img  src="img/pdf.png" onclick="descarga('${otros[id_sel].plano.url[0]}')">
-                    <img  src="img/dwg.png" onclick="descarga('${otros[id_sel].plano.url[1]}')">
-                    <img  src="img/descargar.png" >
-                    </button></h1><br>
-                    <h1 class="titulos">${otros[id_sel].conciertos.nom}<button class="descargar">
-                    <img  src="img/pdf.png" onclick="descarga('${otros[id_sel].conciertos.url[0]}')">
-                    <img  src="img/descargar.png" >
-                    </button></h1>`
-    contenido.innerHTML = d.Texto.replace('\\r\\n', '<br>') + extras
-}
 const carga_contenido = () => {
-    let ini = { method: 'GET', mode: 'cors', redirect: 'follow', cache: 'default' };
-    fetch("/contenido?ID=" + (id_sel + 1) + '130', ini)
-        .then(res => {
-            return res.json()
-        })
-        .then(response => {
-            salida_contenido(response)
-        })
+    let salida = `<div style="height:60px;"></div><h1 class="titulos">${datos[id_sel].plano.nom}
+                    <button class="descargar" onclick="descarga('${datos[id_sel].plano.url[0]}')">                  
+                    ${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" ></button>
+                    <button class="descargar" onclick="descarga('${datos[id_sel].plano.url[1]}')">
+                    ${datos[id_sel].descarga.nom} SWG<img  src="img/descargar.png" >
+                    </button></h1><br>
+                    <h1 class="titulos">${datos[id_sel].conciertos.nom}
+                    <button class="descargar" onclick="descarga('${datos[id_sel].conciertos.url[0]}')">
+                    ${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" >
+                    </button></h1>`
+    //contenido.innerHTML = d.Texto.replace('\\r\\n', '<br>') + extras
+    contenido.innerHTML = salida
+    titular.innerHTML = datos[id_sel].seccion.nom
 }
 const carga_inventario = () => {
     let ini = { method: 'GET', mode: 'cors', redirect: 'follow', cache: 'default' };
@@ -61,6 +53,7 @@ const carga_inventario = () => {
             listado_inventario(response)
         })
 }
+/////////////////////////////////////////////////////////////////////////
 const fecha = t => {
     const tm = new Date(t * 1000)
     let d = tm.getDay(); let m = tm.getMonth(); let a = tm.getFullYear();
@@ -70,12 +63,10 @@ const fecha = t => {
 const determina_idioma = () => {
     if (localStorage.sarobeInfraestructuras2021) {
         id_sel = JSON.parse(localStorage.getItem('sarobeInfraestructuras2021')).id_sel
-    }
+    } else { id_sel = 0 }
     document.getElementById('selector_idiomas').innerHTML =
         `<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
          <option value="1" ${(id_sel == 1) ? 'selected' : ''}>Euskera</option>`
-    document.getElementById('titular').innerHTML =
-        ((id_sel == 0) ? 'Infraestructuras' : 'Azpiegiturak')
     carga_inventario()
     carga_contenido()
 }
@@ -114,6 +105,7 @@ const esperando = m => {
 /////////////////////////////////////////////////////////////////////////
 let id_sel = 0
 window.onload = () => {
+    const titular = document.getElementById('titular')
     const tablas = document.getElementById('tablas')
     const contenido = document.getElementById('contenido')
     const telon = document.getElementById('telon')

@@ -8,14 +8,14 @@ let Idiomas = [{
     texto: "Euskera",
     color: "#f0f"
 }]
-const cabecera_tabla = [`<tr>       
+let cabecera_tabla = [`<tr>       
                             <th>Nº</th>
                             <th>Descripción</th>         
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Fecha</th>         
                         </tr>`,
-                        `<tr>       
+    `<tr>       
                             <th>Zª</th>
                             <th>Deskribapen</th>         
                             <th>Markak</th>
@@ -23,19 +23,23 @@ const cabecera_tabla = [`<tr>
                             <th>Data</th>         
                         </tr>`
 ]
-const grupos = [
+let grupos = [
     { ID: '1', nombre: 'Espacios', izena: 'Guneak' },
     { ID: '5', nombre: 'Audiovisuales', izena: 'Ikus-entzunezko' },
     { ID: '8', nombre: 'Iluminación', izena: 'Argiztapen' },
     { ID: '9', nombre: 'Maquinaria', izena: 'Makina eszenikoa' }
 ]
-const otros = [
+let datos = [
     {
-        plano: { nom: 'Plano tecnico', url: ['pdf/SarobePlanoTecnico.pdf', 'pdf/SarobePlanoTecnico.dwg'] },
-        conciertos: { nom: 'Dotación tecnica Sarobe-Kontzertuak', url: ['pdf/SarobeKontzertuaEquipamiento.pdf'] }
+        seccion: { nom: 'Infraestructuras técnicas' },
+        plano: { nom: 'Plano técnico', url: ['pdf/SarobePlanoTecnico.pdf', 'pdf/SarobePlanoTecnico.dwg'] },
+        conciertos: { nom: 'Dotación Sarobe-Kontzertuak', url: ['pdf/SarobeKontzertuaEquipamiento.pdf'] },
+        descarga: { nom: 'Descarga' }
     },
     {
+        seccion: { nom: 'Azpiegiturak teknikoak' },
         plano: { nom: 'Plano teknikooa', url: ['pdf/SarobePlanoTecnico.pdf', 'pdf/SarobePlanoTecnico.dwg'] },
-        conciertos: { nom: 'Hornidurak teknikoa Sarobe-Kontzertuak', url: ['pdf/SarobeKontzertuaEquipamiento.pdf'] }
+        conciertos: { nom: 'Hornidurak Sarobe-Kontzertuak', url: ['pdf/SarobeKontzertuaEquipamiento.pdf'] },
+        descarga: { nom: 'Deskargatu' }
     }
 ]

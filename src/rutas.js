@@ -7,21 +7,11 @@ const Contenidos = require('./modelos/contenidos')
 const Textos = require('./modelos/textos')
 const fs = require('fs');
 const pdf = require('html-pdf')
-const { fileURLToPath } = require('url')
-const cabecera_tabla = [(`<tr><th>Nº</th><th>Descripción</th> <th>Marca</th><th>Modelo</th><th>Fecha</th></tr>`),
-                        (`<tr><th>Zª</th><th>Deskribapen</th><th>Markak</th><th>Eredu</th><th>Data</th></tr>`)]
-const fecha = t => {
-    const tm = new Date(t * 1000)
-    let d = tm.getDay(); let m = tm.getMonth(); let a = tm.getFullYear();
-    d = d < 10 ? '0' + d : d; m = m < 10 ? '0' + m : m
-    return d + '/' + m + '/' + a
-}
-require('./conexion')
 
-
+require('./conexion.js')
 router.get('/inventario', async (req, res) => {
     const salida = await Inventarios.find(
-        { $or: [{ Grupo: '1' }, { Grupo: '5' }, { Grupo: '8' }, { Grupo: '9' }] },
+        { $and: [{ Alquiler: '1' }], $or: [{ Grupo: '1' }, { Grupo: '5' }, { Grupo: '8' }, { Grupo: '9' }] },
         { _id: 0, Grupo: 1, Cantidad: 1, Descripcion1: 1, Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 }
     ).sort({ Grupo: 1, Descripcion1: 1, Descripcion2: 1 })
     if (!salida) {
@@ -30,30 +20,39 @@ router.get('/inventario', async (req, res) => {
     res.status(200).json(salida)
 });
 
-
-
-
-router.get('/contenido', async (req, res) => {
-    const ID = req.query.ID
-    const salida = await Contenidos.findOne(
-        { ID: ID },
-        { _id: 0, Texto: 1 }
-    )
+router.get('/conciertos', async (req, res) => {
+    const salida = await Inventarios.find(
+        { $and: [{ Ocupacion: 'conciertos' }], $or: [{ Grupo: '1' }, { Grupo: '5' }, { Grupo: '8' }, { Grupo: '9' }] },
+        { _id: 0, Grupo: 1, Cantidad: 1, Descripcion1: 1, Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 }
+    ).sort({ Grupo: 1, Descripcion1: 1, Descripcion2: 1 })
     if (!salida) {
         return res.status(404).send("ERROR")
     }
     res.status(200).json(salida)
 });
 
+router.get('/consulta', async (req, res) => {
+    const grupo = req.query.g
+    const salida = await Inventarios.find({ Grupo: grupo })
+    if (!salida) { return res.status(404).send("ERROR") }
+    res.status(200).json(salida)
+});
+
 router.get('/descarga', async (req, res) => {
-    res.status(200).json(req.query.fichero) 
+    res.status(200).json(req.query.fichero)
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const fecha = t => {
+    const tm = new Date(t * 1000)
+    let d = tm.getDay(); let m = tm.getMonth(); let a = tm.getFullYear();
+    d = d < 10 ? '0' + d : d; m = m < 10 ? '0' + m : m
+    return d + '/' + m + '/' + a
+}
 router.get('/pdf', async (req, res) => {
     const i = Number(req.query.i)
     const salida = await Inventarios.find(
-        { $or: [{ Grupo: req.query.s }] },
+        { $and: [{ Alquiler: '1' }], $or: [{ Grupo: req.query.s }] },
         { _id: 0, Grupo: 1, Cantidad: 1, Descripcion1: 1, Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 }
     ).sort({ Grupo: 1, Descripcion1: 1, Descripcion2: 1 })
     if (!salida) { return res.status(404).send("ERROR") }
@@ -139,9 +138,24 @@ router.get('/pdf', async (req, res) => {
     pdf.create(html).toFile(`src/public/pdf/${req.query.titulo}.pdf`, function (error, respuesta) {
         if (error) return console.log(error);
         console.log(respuesta); // { filename: '/app/businesscard.pdf' } 
-        res.status(200).json(`pdf/${req.query.titulo}.pdf`)       
+        res.status(200).json(`pdf/${req.query.titulo}.pdf`)
     });
-    
+
 });
 //
+const cabecera_tabla = [`<tr>       
+                            <th>Nº</th>
+                            <th>Descripción</th>         
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Fecha</th>         
+                        </tr>`,
+    `<tr>       
+                            <th>Zª</th>
+                            <th>Deskribapen</th>         
+                            <th>Markak</th>
+                            <th>Eredu</th>
+                            <th>Data</th>         
+                        </tr>`
+]
 module.exports = router

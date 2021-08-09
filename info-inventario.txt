@@ -1,0 +1,19 @@
+{
+    "_id": "60da107409fc7d5608bba742",
+    "ID": "1350072274",
+    "Cantidad": "1",
+    "Grupo": "1",
+    "Descripcion1": "Oficina 20 m2",        //Descripción en Castellano
+    "Descripcion2": "20 m2-ko bulegoa",     //Descripción en Euskera
+    "Marca": "",
+    "Modelo": "",
+    "Modificado": "1375946233",
+    "Estado": "",
+    "Departamento": "2",
+    "Ubicacion": "3",
+    "Portable": "0",
+    "Disponible": "1",
+    "Alquiler": "",
+    "Ocupacion": "",
+    "Foto": "0"
+  }
