@@ -1,14 +1,21 @@
 const { Router } = require('express')
 const router = Router()
 
-const Idiomas = require('./modelos/idiomas')
 const Inventarios = require('./modelos/inventarios')
-const Contenidos = require('./modelos/contenidos')
-const Textos = require('./modelos/textos')
+const Notas = require('./modelos/notas')
 const fs = require('fs');
 const pdf = require('html-pdf')
 
 require('./conexion.js')
+
+router.get('/notas', async (req, res) => {
+    const salida = await Notas.find({},{ _id: 0, ID: 1, htm1: 1, htm2: 1 }).sort({ ID: 1 })
+    if (!salida) {
+        return res.status(404).send("ERROR")
+    }
+    res.status(200).json(salida)
+});
+
 router.get('/inventario', async (req, res) => {
     const salida = await Inventarios.find(
         { $and: [{ Alquiler: '1' }], $or: [{ Grupo: '1' }, { Grupo: '5' }, { Grupo: '8' }, { Grupo: '9' }] },
@@ -73,7 +80,7 @@ router.get('/pdf', async (req, res) => {
                             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                             padding: 20px;
                             margin: 10px;
-                            font-size: 11px;
+                            font-size: 10px;
                         }
                         #logo {
                             position: absolute;
@@ -85,7 +92,7 @@ router.get('/pdf', async (req, res) => {
                         table {
                             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                             margin: 10px;
-                            font-size: 11px;
+                            font-size: 9px;
                             width: calc(100% - 20px);
                             border-collapse: collapse;
                             background-color: white;
@@ -101,7 +108,7 @@ router.get('/pdf', async (req, res) => {
                         }
 
                         td.fecha {
-                            font-size: 9px;
+                            font-size: 7px;
                         }
 
                         th {
@@ -115,7 +122,7 @@ router.get('/pdf', async (req, res) => {
                             margin-bottom: 40px;
                             width: 100%;
                             text-align: right;
-                            font-size: 10px;
+                            font-size: 8px;
                         }
 
                         header>span>a {
@@ -133,12 +140,13 @@ router.get('/pdf', async (req, res) => {
                     |<span> Fax: 943 008067</span>
                     |<span><a href="mailto:sarobe@urnieta.eus">sarobe@urnieta.eus</a></span>
                     |<span>2012 ®</span>
-</header>`
+                    </header>`
     const html = `${estilo}<body>${cabeza}<h1>${req.query.titulo}</h1><table>${cabecera_tabla[i] + cuerpoTabla}</table> </body>`
+
     pdf.create(html).toFile(`src/public/pdf/${req.query.titulo}.pdf`, function (error, respuesta) {
-        if (error) return console.log(error);
+        if (error) return console.log(error);res.status(200).json(`pdf/${req.query.titulo}.pdf`)
         console.log(respuesta); // { filename: '/app/businesscard.pdf' } 
-        res.status(200).json(`pdf/${req.query.titulo}.pdf`)
+        
     });
 
 });

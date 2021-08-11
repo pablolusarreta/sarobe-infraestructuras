@@ -64,6 +64,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 14px;
+    font-weight: 700;
     background-color: #fff;
 }
 
@@ -132,7 +133,7 @@ section {
     overflow-x: hidden;
 }
 
-.titulos {
+h1.titulos, div.nota {
     margin: 0px auto;
     width: 80vw;
     max-width: 900px;
@@ -171,7 +172,12 @@ button.descargar>img {
 h1 {
     padding-bottom: 8px;
     font-size: 18px;
-    border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.2);
+}
+
+div.nota {
+    padding: 16px 10px;
+    padding-bottom: 40px;
 }
 
 table {
@@ -201,7 +207,7 @@ th {
 
 #contenido {
     margin: 60px auto;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     width: 80vw;
     max-width: 900px;
     color: #fff;

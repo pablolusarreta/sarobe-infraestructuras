@@ -17,5 +17,4 @@ const inventariosSchema = new Schema({
     Ocupacion: String,
     Foto: String
 })
-
 module.exports = model('inventarios', inventariosSchema)

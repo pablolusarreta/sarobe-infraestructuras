@@ -13,7 +13,7 @@
     "Ubicacion": "3",
     "Portable": "0",
     "Disponible": "1",
-    "Alquiler": "",
-    "Ocupacion": "",
+    "Alquiler": "",                         //[ ==1 ]Visible en la web
+    "Ocupacion": "",                        //[== 'conciertos'] Listado de materialconciertos
     "Foto": "0"
   }
