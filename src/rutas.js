@@ -122,7 +122,7 @@ router.get('/pdf', async (req, res) => {
                             margin-bottom: 40px;
                             width: 100%;
                             text-align: right;
-                            font-size: 8px;
+                            font-size: 7px;
                         }
 
                         header>span>a {
@@ -139,7 +139,6 @@ router.get('/pdf', async (req, res) => {
                     |<span>Tel.: <a href="callto:943008042">943 008042</a></span>
                     |<span> Fax: 943 008067</span>
                     |<span><a href="mailto:sarobe@urnieta.eus">sarobe@urnieta.eus</a></span>
-                    |<span>2012 ®</span>
                     </header>`
     const html = `${estilo}<body>${cabeza}<h1>${req.query.titulo}</h1><table>${cabecera_tabla[i] + cuerpoTabla}</table> </body>`
 
