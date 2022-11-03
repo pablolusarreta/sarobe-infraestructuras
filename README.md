@@ -1,0 +1,1 @@
+Aplicación web  web conectada a una base remota Mongodb con el inventario de las infraestructuras del C.A.E. Sarobe
