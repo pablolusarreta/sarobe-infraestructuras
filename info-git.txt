@@ -1,6 +1,0 @@
-//Heroku
-$ heroku login
-
-$ git add .
-$ git commit -am "Nueva subida"
-$ git push heroku master .
