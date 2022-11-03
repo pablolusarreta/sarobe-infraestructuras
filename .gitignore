@@ -1,3 +1,4 @@
 .vscode
-mongodb
+info
 node_modules
+package-lock.json

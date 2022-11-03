@@ -3,9 +3,4 @@ $ heroku login
 
 $ git add .
 $ git commit -am "Nueva subida"
-$ git push heroku master 
-
-// Azure
-
-git remote add azure https://pablo_lusarreta@horarios-web.scm.azurewebsites.net/horarios-web.git
-git push -u azure master
+$ git push heroku master .
