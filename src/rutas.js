@@ -26,7 +26,6 @@ router.get('/inventario', async (req, res) => {
     }
     res.status(200).json(salida)
 });
-
 router.get('/conciertos', async (req, res) => {
     const salida = await Inventarios.find(
         { $and: [{ Ocupacion: 'conciertos' }], $or: [{ Grupo: '1' }, { Grupo: '5' }, { Grupo: '8' }, { Grupo: '9' }] },

@@ -1,13 +1,5 @@
-if (navigator.userAgent.match(/Android/i)
-    || navigator.userAgent.match(/webOS/i)
-    || navigator.userAgent.match(/iPhone/i)
-    || navigator.userAgent.match(/iPad/i)
-    || navigator.userAgent.match(/iPod/i)
-    || navigator.userAgent.match(/BlackBerry/i)
-    || navigator.userAgent.match(/Windows Phone/i))
-    location.assign("index.movil.html")
-///////////////////////////////////////////////////////////////
 const listado_inventario = d => {
+    console.log(d)
     tablas.innerHTML = ''
     grupos.forEach(g => {
         let cuerpoTabla = new String()
@@ -23,7 +15,6 @@ const listado_inventario = d => {
                     <td>${element['Descripcion' + (id_sel + 1)]}</td>
                     <td>${element.Marca}</td>
                     <td>${element.Modelo}</td>
-                    <td class="fecha">${fecha(element.Modificado)}</td>
                 </tr>`
             }
         })
@@ -33,7 +24,7 @@ const listado_inventario = d => {
             ${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" >
             </button></h1>
             <div class="nota" id="nota${g.ID}"></div>
-            <table>${cabecera_tabla[id_sel] + cuerpoTabla}</table>
+            <table>${cabecera_tabla_movil[id_sel] + cuerpoTabla}</table>
         </div>`
     });
     carga_notas()
@@ -54,7 +45,7 @@ const carga_contenido = () => {
                     <div class="nota" id="nota01"></div>`
     //contenido.innerHTML = d.Texto.replace('\\r\\n', '<br>') + extras
     contenido.innerHTML = salida
-    titular.innerHTML = datos[id_sel].seccion.nom
+    //titular.innerHTML = datos[id_sel].seccion.nom
     carga_inventario()
 }
 const carga_inventario = () => {
