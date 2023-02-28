@@ -10,7 +10,6 @@ mongoose.connect(uri, {
     useUnifiedTopology: true
 })
     .then(db => console.log(`=> cloud.mongodb.com/${baseDatos}`))
-
     .catch(err => console.log(err));
 
 const db = mongoose.connection;
