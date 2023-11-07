@@ -97,8 +97,8 @@ const determina_idioma = () => {
         id_sel = JSON.parse(localStorage.getItem('sarobeInfraestructuras2021')).id_sel
     } else { id_sel = 0 }
     document.getElementById('selector_idiomas').innerHTML =
-        `<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
-         <option value="1" ${(id_sel == 1) ? 'selected' : ''}>Euskera</option>`
+            `<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
+            <option value="1" ${(id_sel == 1) ? 'selected' : ''}>Euskera</option>`
     carga_contenido()
 }
 const establece_idioma = i => {
