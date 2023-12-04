@@ -1,7 +1,7 @@
 {
-  "name": "sustapena-inventario",
+  "name": "sarobe-infraestructuras",
   "version": "1.0.0",
-  "description": "Conexion con mongodb remota a la base sutapena",
+  "description": "Conexion con mongodb remota a la base Sarobe",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index",
