@@ -2,3 +2,6 @@
 info
 node_modules
 package-lock.json
+.dockerignore
+Dockerfile
+fly.toml
