@@ -20,7 +20,7 @@ const listado_inventario = d => {
                 cuerpoTabla +=
                     `<tr>
                     <td>${element.Cantidad}</td>          
-                    <td>${element['Descripcion' + (id_sel + 1)]}</td>
+                    <td onclick="copia_id('${element._id}')">${element['Descripcion' + (id_sel + 1)]}</td>
                     <td>${element.Marca}</td>
                     <td>${element.Modelo}</td>
                     <td class="fecha">${fecha(element.Modificado)}</td>
@@ -85,6 +85,16 @@ const listado_notas = d => {
         ele.innerHTML = (id_sel == 0) ? d[i].htm1 : d[i].htm2
     }
 }
+const copia_id = t => {
+    const s = `_id: ObjectId("${t}")`
+    navigator.clipboard.writeText(s)
+        .then(() => {
+            console.log(s);
+        })
+        .catch(err => {
+            console.error('Error al copiar el texto: ', err);
+        });
+}
 /////////////////////////////////////////////////////////////////////////
 const fecha = t => {
     const tm = new Date(t * 1000)
@@ -97,7 +107,7 @@ const determina_idioma = () => {
         id_sel = JSON.parse(localStorage.getItem('sarobeInfraestructuras2021')).id_sel
     } else { id_sel = 0 }
     document.getElementById('selector_idiomas').innerHTML =
-            `<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
+        `<option value="0" ${(id_sel == 0) ? 'selected' : ''}>Castellano</option>
             <option value="1" ${(id_sel == 1) ? 'selected' : ''}>Euskera</option>`
     carga_contenido()
 }
