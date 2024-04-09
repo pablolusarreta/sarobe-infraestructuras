@@ -67,7 +67,7 @@ body {
     padding: 0;
     font-size: 14px;
     font-weight: 700;
-    background-color: #111;
+    background-color: #666;
     transition: all 1s;
 }
 
@@ -105,7 +105,7 @@ header>img:nth-child(3) {
     left: 10%;
     font-size: 40px;
     font-weight: 900;
-    color: #353990;
+    color: #8c92ff;
 }
 
 #selector_idiomas {
@@ -148,7 +148,7 @@ h1.titulos, div.nota {
 
 h1.titulos {
     font-size: 28px;
-    color: #353990;
+    color: #bdc0ff;
 }
 
 button.descargar {
