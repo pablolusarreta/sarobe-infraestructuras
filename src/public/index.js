@@ -124,7 +124,7 @@ const pdf = (s, i, titulo) => {
             return res.json()
         })
         .then(response => {
-            window.open(response)
+            window.location.assign(response)
             esperando(false)
         })
 }
