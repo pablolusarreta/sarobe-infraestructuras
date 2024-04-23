@@ -142,11 +142,11 @@ router.get('/pdf', async (req, res) => {
     const html = `${estilo}<body>${cabeza}<h1>${req.query.titulo}</h1><table>${cabecera_tabla[i] + cuerpoTabla}</table> </body>`
 
     pdf.create(html).toFile(`src/public/pdf/${req.query.titulo}.pdf`, function (error, respuesta) {
-        if (error) return console.log(error);res.status(200).json(`pdf/${req.query.titulo}.pdf`)
+        if (error) return console.log(error);
+        res.json(`pdf/${req.query.titulo}.pdf`)
         console.log(respuesta); // { filename: '/app/businesscard.pdf' } 
         
     });
-
 });
 //
 const cabecera_tabla = [`<tr>       
