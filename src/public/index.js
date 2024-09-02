@@ -29,9 +29,9 @@ const listado_inventario = d => {
         })
         tablas.innerHTML +=
             `<div>
-            <h1 class="titulos">${titulo}<button class="descargar" onclick="pdf(${dep},${id_sel},'${titulo}')">
-            ${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" >
-            </button></h1>
+            <h1 class="titulos">${titulo}
+        <!--<button class="descargar"  onclick="pdf(${dep},${id_sel},'${titulo}')">${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" ></button>-->
+            </h1>
             <div class="nota" id="nota${g.ID}"></div>
             <table>${cabecera_tabla[id_sel] + cuerpoTabla}</table>
         </div>`
