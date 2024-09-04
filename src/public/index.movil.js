@@ -20,7 +20,7 @@ const listado_inventario = d => {
         })
         tablas.innerHTML +=
             `<div>
-            <h1 class="titulos">${titulo}<button class="descargar" onclick="pdf(${dep},${id_sel},'${titulo}')">
+            <h1 class="titulos">${titulo}<button class="descargar"  onclick="window.open('genera_pdf?g=${g.ID}&t=${titulo}', '_blank', 'noopener,noreferrer')">
             ${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" >
             </button></h1>
             <div class="nota" id="nota${g.ID}"></div>
