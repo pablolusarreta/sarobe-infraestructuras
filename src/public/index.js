@@ -8,6 +8,7 @@ if (navigator.userAgent.match(/Android/i)
     location.assign("index.movil.html")
 ///////////////////////////////////////////////////////////////
 const listado_inventario = d => {
+    INVENTARIO = d
     tablas.innerHTML = ''
     grupos.forEach(g => {
         let cuerpoTabla = new String()
@@ -30,7 +31,8 @@ const listado_inventario = d => {
         tablas.innerHTML +=
             `<div>
             <h1 class="titulos">${titulo}
-        <!--<button class="descargar"  onclick="pdf(${dep},${id_sel},'${titulo}')">${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" ></button>-->
+            <button class="descargar"  onclick="window.open('genera_pdf?g=${g.ID}&t=${titulo}', '_blank', 'noopener,noreferrer')">
+            ${datos[id_sel].descarga.nom} PDF<img  src="img/descargar.png" ></button>
             </h1>
             <div class="nota" id="nota${g.ID}"></div>
             <table>${cabecera_tabla[id_sel] + cuerpoTabla}</table>
@@ -85,6 +87,7 @@ const listado_notas = d => {
         ele.innerHTML = (id_sel == 0) ? d[i].htm1 : d[i].htm2
     }
 }
+
 const copia_id = t => {
     const s = `_id: ObjectId("${t}")`
     navigator.clipboard.writeText(s)
@@ -145,6 +148,7 @@ const esperando = b => {
     document.getElementsByTagName('section')[0].style.filter = b ? 'blur(2px)' : 'none'
 }
 /////////////////////////////////////////////////////////////////////////
+let INVENTARIO
 let id_sel = 0
 window.onload = () => {
     const titular = document.getElementById('titular')
