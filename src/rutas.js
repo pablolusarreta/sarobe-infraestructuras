@@ -55,27 +55,44 @@ const buildPDF = (dataCallback, endCallback, titulo, datos) => {
     doc.on("end", endCallback);
 
 
+
+    doc.image('src/public/img/telones-bailarin.png', {
+        fit: [40, 40],
+        align: 'left',
+        valign: 'top'
+    })
+    doc.image('src/public/img/texto SARoBE.png', {
+        fit: [88, 70],
+        align: 'right',
+        valign: 'top',
+        x: 120
+    })
     doc.moveDown();
     const tableArray = {
         title: titulo,
-        headers: ["Nº", "Descripcion", "Marca", "Modelo"],
+        headers: [
+            { "label": "Nº", "property": "n", "width": 25 },
+            { "label": "Descripcion", "property": "descripcion", "width": 145 },
+            { "label": "Marca", "property": "marca", "width": 145 },
+            { "label": "Modelo", "property": "modelome", "width": 145 }
+        ],
         rows: []
     };
     datos.forEach(element => {
         tableArray.rows.push([element.Cantidad, element.Descripcion1, element.Marca, element.Modelo])
     })
     //console.log(tableArray)
-    doc.table(tableArray, { width: 460 }); // A4 595.28 x 841.89 (portrait) (about width sizes)
+    doc.table(tableArray, { width: 460, y: 140 }); // A4 595.28 x 841.89 (portrait) (about width sizes)
     doc.end();
 }
 
-router.get('/genera_pdf', async (req, res) => {
-    const stream = res.writeHead(200, {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": "attachment; filename=inventario.pdf",
-    });
+router.get('/genera_pdf', async (req, res) => {   
     const titulo = req.query.t
     const grupo = req.query.g
+    const stream = res.writeHead(200, {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `attachment; filename=Sarobe-${titulo}.pdf`,
+    });
     const salida = await Inventarios.find({ Grupo: grupo }, { _id: 0, Cantidad: 1, Descripcion1: 1, Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 })
     if (!salida) { return res.status(404).send("ERROR") }
     else if (salida) {
