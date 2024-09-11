@@ -35,7 +35,7 @@ router.get('/conciertos', async (req, res) => {
     }
     res.status(200).json(salida)
 });
-
+// SOLO GET DESDE EL NAVAGADOR g=1,5,8,9
 router.get('/consulta', async (req, res) => {
     const grupo = req.query.g
     const salida = await Inventarios.find({ Grupo: grupo })
@@ -86,14 +86,18 @@ const buildPDF = (dataCallback, endCallback, titulo, datos) => {
     doc.end();
 }
 
-router.get('/genera_pdf', async (req, res) => {   
+router.get('/genera_pdf', async (req, res) => {
     const titulo = req.query.t
     const grupo = req.query.g
     const stream = res.writeHead(200, {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename=Sarobe-${titulo}.pdf`,
     });
-    const salida = await Inventarios.find({ Grupo: grupo }, { _id: 0, Cantidad: 1, Descripcion1: 1, Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 })
+    const salida = await Inventarios.find({
+        $and: [{ Alquiler: '1' }],
+        $or: [{ Grupo: grupo }]
+    },
+        { _id: 0, Cantidad: 1, Descripcion1: 1, Descripcion2: 1, Marca: 1, Modelo: 1, Modificado: 1 }).sort({ Grupo: 1, Descripcion1: 1, Descripcion2: 1 })
     if (!salida) { return res.status(404).send("ERROR") }
     else if (salida) {
 
