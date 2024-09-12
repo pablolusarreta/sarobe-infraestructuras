@@ -54,8 +54,6 @@ const buildPDF = (dataCallback, endCallback, titulo, datos) => {
     doc.on("data", dataCallback);
     doc.on("end", endCallback);
 
-
-
     doc.image('src/public/img/telones-bailarin.png', {
         fit: [40, 40],
         align: 'left',
@@ -72,9 +70,9 @@ const buildPDF = (dataCallback, endCallback, titulo, datos) => {
         title: titulo,
         headers: [
             { "label": "Nº", "property": "n", "width": 25 },
-            { "label": "Descripcion", "property": "descripcion", "width": 145 },
-            { "label": "Marca", "property": "marca", "width": 145 },
-            { "label": "Modelo", "property": "modelome", "width": 145 }
+            { "label": "Descripcion", "property": "descripcion", "width": 235 },
+            { "label": "Marca", "property": "marca", "width": 100 },
+            { "label": "Modelo", "property": "modelome", "width": 100 }
         ],
         rows: []
     };
